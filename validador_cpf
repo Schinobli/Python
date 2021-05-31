@@ -44,8 +44,3 @@ else:
 #  VALIDACAO DO CPF
 msg = f'{cpf_aux_1} é válido.' if cpf == cpf_validacao else f'{cpf_aux_1} não é válido.'
 print(msg)
-
-
-
-
-
