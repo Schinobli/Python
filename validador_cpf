@@ -1,0 +1,51 @@
+cpf = '039.339.930-32' #  CPF GERADO ALEATÓRIAMENTE
+
+#  SALVANDO FORMATACAO ORIGINAL
+cpf_aux_1 = cpf
+
+#  FORMATANDO O CPF
+cpf = cpf.replace('.', '')
+cpf = cpf.replace('-', '')
+cpf_validacao = cpf
+cpf = cpf[:-2]
+
+#  ADICIONANDO O RESULTADO DA MULTIPLICAÇAO NAS LISTA
+lista_1 = []
+lista_2 = []
+for indice, mult in enumerate(range(10, 1, -1)):
+    lista_1.append(int(cpf[indice]) * mult)
+    lista_2.append(cpf[indice])
+
+#  SOMANDO OS RESULTADOS DA LISTA 1 E OBTENDO O PRIMEIRO DIGITO
+total = 0
+for x in lista_1:
+    total += int(x)
+dgt_1 = 0 if (11 - (total % 11)) > 9 else (11 - (total % 11))
+
+# ADICIONANDO O DIGITO 1 PARA VALIDACAO DA SEGUNDA LISTA
+lista_2.append(dgt_1)
+
+# SOMANDO OS RESULTADOS DA LISTA 2 E OBTENDO O SEGUNDO DIGITO
+total = 0
+for x in lista_2:
+    total += int(x)
+dgt_2 = 0 if (11 - (total % 11)) > 9 else (11 - (total % 11))
+
+# REMOVENDO O PRIMEIRO DIGITO DA LISTA 2 PARA VALIDACAO
+lista_2.pop()
+x = ''
+
+# ITERANDO A LISTA 2 DO CPF COM OS DIGITOS CERTOS
+for valor in lista_2:
+    x += valor
+else:
+    cpf = x + str(dgt_1) + str(dgt_2)
+
+#  VALIDACAO DO CPF
+msg = f'{cpf_aux_1} é válido.' if cpf == cpf_validacao else f'{cpf_aux_1} não é válido.'
+print(msg)
+
+
+
+
+
